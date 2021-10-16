@@ -10,7 +10,16 @@ public class ConstructorXML {
         String codigo = "<PROYECTO_W>";
         codigo += "     <NOMBRE_PROYECTO>"+proyecto.getNombre().trim()+"</NOMBRE_PROYECTO>";
         codigo += "     <PAQUETE_PRINCIPAL>";
-        codigo += construirPaquete(proyecto.getPaquetePrincipal());
+        codigo += "     <PAQUETES_PAQUETE>";
+        for (Paquete paqueteHijo:proyecto.getPaquetePrincipal().getPaquetes()){
+            codigo += construirPaquete(paqueteHijo);
+        }
+        codigo += "     </PAQUETES_PAQUETE>";
+        codigo += "     <ARCHIVOS_PAQUETE>";
+        for (Archivo archivo:proyecto.getPaquetePrincipal().getArchivos()){
+            codigo += construirArchivo(archivo);
+        }
+        codigo += "     </ARCHIVOS_PAQUETE>";
         codigo += "     </PAQUETE_PRINCIPAL>";
         codigo += "</PROYECTO_W>";
         return codigo;
@@ -21,7 +30,7 @@ public class ConstructorXML {
         codigo += "     <NOMBRE_ARCHIVO>"+archivo.getNombre().trim()+"</NOMBRE_ARCHIVO>";
         codigo += "     <ID_ARCHIVO>"+archivo.getId().trim()+"</ID_ARCHIVO>";
         codigo += "     <PAQUETE_ARCHIVO>"+archivo.getPaquete().trim()+"</PAQUETE_ARCHIVO>";
-        codigo += "     <CODIGO_ARCHIVO>"+archivo.getCodigo()+"</CODIGO_ARCHIVO>";
+        codigo += "     <CODIGO_ARCHIVO>*!+\"@@@\"###$$$"+archivo.getCodigo()+"$$$###\"@@@\"+!*</CODIGO_ARCHIVO>";
         codigo += "</ARCHIVO>";
         return codigo;
     }

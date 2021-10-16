@@ -5,6 +5,10 @@ public class Proyecto {
     private String nombre;
     private Paquete paquetePrincipal;
 
+    public Proyecto() {
+        paquetePrincipal = new Paquete();
+    }
+
     public String getNombre() {
         return nombre;
     }

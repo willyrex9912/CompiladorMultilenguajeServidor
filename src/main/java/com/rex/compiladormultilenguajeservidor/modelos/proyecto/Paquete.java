@@ -10,6 +10,11 @@ public class Paquete {
     private List<Archivo> archivos;
     private List<Paquete> paquetes;
 
+    public Paquete() {
+        archivos = new LinkedList<>();
+        paquetes = new LinkedList<>();
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -40,5 +45,13 @@ public class Paquete {
 
     public void setPaquetes(LinkedList<Paquete> paquetes) {
         this.paquetes = paquetes;
+    }
+
+    public void agregarPaquete(Paquete paquete){
+        this.paquetes.add(paquete);
+    }
+
+    public void agregarArchivo(Archivo archivo){
+        this.archivos.add(archivo);
     }
 }
