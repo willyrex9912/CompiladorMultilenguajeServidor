@@ -10,6 +10,7 @@ parser code {:
 
     LinkedList<Paquete> pilaPaquetes = new LinkedList<>();
     private Proyecto proyecto = new Proyecto();
+    private Archivo archivo;
 
     public void syntax_error(Symbol symbol){
         if(symbol.value==null){
@@ -77,7 +78,7 @@ inicial ::= proyecto
 
 proyecto ::=
     ET_PROYECTO_INIC ET_NOMBRE_PROYECTO_INIC ID_NOMBRE:id ET_NOMBRE_PROYECTO_FIN {:
-        proyecto.setId(id.toString());
+        proyecto.setNombre(id.toString());
     :}
          paquete_principal
     ET_PROYECTO_FIN
@@ -137,11 +138,20 @@ paquete ::=
 
 archivo ::=
     ET_ARCHIVO_INIC {:
-        
+        archivo = new Archivo();
+        pilaPaquetes.getLast().agregarArchivo(archivo);
     :}
-        ET_NOMBRE_ARCHIVO_INIC ID_NOMBRE ET_NOMBRE_ARCHIVO_FIN
-        ET_ID_ARCHIVO_INIC ID_NOMBRE ET_ID_ARCHIVO_FIN
-        ET_PAQUETE_ARCHIVO_INIC ID_NOMBRE ET_PAQUETE_ARCHIVO_FIN
-        ET_CODIGO_ARCHIVO_INIC CODIGO ET_CODIGO_ARCHIVO_FIN
+        ET_NOMBRE_ARCHIVO_INIC ID_NOMBRE:nombre ET_NOMBRE_ARCHIVO_FIN {:
+            archivo.setNombre(nombre.toString());
+        :}
+        ET_ID_ARCHIVO_INIC ID_NOMBRE:id ET_ID_ARCHIVO_FIN {:
+            archivo.setId(id.toString());
+        :}
+        ET_PAQUETE_ARCHIVO_INIC ID_NOMBRE:paquete ET_PAQUETE_ARCHIVO_FIN {:
+            archivo.setPaquete(paquete.toString());
+        :}
+        ET_CODIGO_ARCHIVO_INIC CODIGO:codigo ET_CODIGO_ARCHIVO_FIN {:
+            archivo.setCodigo(codigo.toString());
+        :}
     ET_ARCHIVO_FIN
     ;

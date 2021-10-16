@@ -61,7 +61,7 @@ ESPECIAL = [ \t\r\n]+
 <YYINITIAL>{
     [a-zA-Z0-9_]+("."[a-zA-Z0-9_]+)*        { return new Symbol(ID_NOMBRE, yyline, yycolumn, yytext()); }
     {ESPECIAL}                              { /*IGNORAR*/ }
-    "*!+\"@@@\"###$$$"~"$$$###\"@@@\"+!*"   { return new Symbol(CODIGO, yyline, yycolumn, yytext()); }
+    "*!+\"@@@\"###$$$"~"$$$###\"@@@\"+!*"   { return new Symbol(CODIGO, yyline, yycolumn, yytext().substring(14,yytext().length()-14)); }
 	[^]                                     { System.out.println("CARACTER NO PERTENECE AL LENGUAJE"); }
 }
 

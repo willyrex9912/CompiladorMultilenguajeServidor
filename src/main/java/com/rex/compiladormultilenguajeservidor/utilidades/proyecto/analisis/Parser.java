@@ -5,8 +5,9 @@
 
 package com.rex.compiladormultilenguajeservidor.utilidades.proyecto.analisis;
 
-import java.util.List;
+import java.util.LinkedList;
 import java_cup.runtime.*;
+import com.rex.compiladormultilenguajeservidor.modelos.proyecto.*;
 import java_cup.runtime.XMLElement;
 
 /** CUP v0.11b 20160615 (GIT 4ac7450) generated parser.
@@ -32,11 +33,14 @@ public class Parser extends java_cup.runtime.lr_parser {
   /** Production table. */
   protected static final short _production_table[][] = 
     unpackFromStrings(new String[] {
-    "\000\016\000\002\002\003\000\002\002\004\000\002\003" +
-    "\010\000\002\004\012\000\002\005\003\000\002\005\002" +
-    "\000\002\006\003\000\002\006\004\000\002\007\003\000" +
-    "\002\007\002\000\002\010\003\000\002\010\004\000\002" +
-    "\011\020\000\002\012\020" });
+    "\000\030\000\002\002\003\000\002\002\004\000\002\013" +
+    "\002\000\002\003\011\000\002\014\002\000\002\004\013" +
+    "\000\002\005\003\000\002\005\002\000\002\006\003\000" +
+    "\002\006\004\000\002\007\003\000\002\007\002\000\002" +
+    "\010\003\000\002\010\004\000\002\015\002\000\002\016" +
+    "\002\000\002\017\002\000\002\011\023\000\002\020\002" +
+    "\000\002\021\002\000\002\022\002\000\002\023\002\000" +
+    "\002\024\002\000\002\012\025" });
 
   /** Access to production table. */
   public short[][] production_table() {return _production_table;}
@@ -44,32 +48,37 @@ public class Parser extends java_cup.runtime.lr_parser {
   /** Parse-action table. */
   protected static final short[][] _action_table = 
     unpackFromStrings(new String[] {
-    "\000\064\000\004\004\004\001\002\000\004\006\010\001" +
+    "\000\076\000\004\004\004\001\002\000\004\006\010\001" +
     "\002\000\004\002\001\001\002\000\004\002\007\001\002" +
     "\000\004\002\000\001\002\000\004\037\011\001\002\000" +
-    "\004\007\012\001\002\000\004\010\013\001\002\000\004" +
-    "\020\016\001\002\000\004\005\015\001\002\000\004\002" +
-    "\uffff\001\002\000\006\012\021\021\ufffc\001\002\000\004" +
-    "\021\ufffd\001\002\000\004\021\062\001\002\000\004\014" +
-    "\024\001\002\000\006\012\021\021\ufffb\001\002\000\004" +
-    "\021\ufffa\001\002\000\004\037\025\001\002\000\004\015" +
-    "\026\001\002\000\004\016\027\001\002\000\004\037\030" +
-    "\001\002\000\004\017\031\001\002\000\004\020\032\001" +
-    "\002\000\006\012\021\021\ufffc\001\002\000\004\021\034" +
-    "\001\002\000\004\022\035\001\002\000\006\023\ufff8\024" +
-    "\041\001\002\000\004\023\060\001\002\000\004\023\ufff9" +
-    "\001\002\000\006\023\ufff7\024\041\001\002\000\004\026" +
-    "\042\001\002\000\004\037\043\001\002\000\004\027\044" +
-    "\001\002\000\004\030\045\001\002\000\004\037\046\001" +
-    "\002\000\004\031\047\001\002\000\004\032\050\001\002" +
-    "\000\004\037\051\001\002\000\004\033\052\001\002\000" +
-    "\004\034\053\001\002\000\004\036\054\001\002\000\004" +
-    "\035\055\001\002\000\004\025\056\001\002\000\006\023" +
-    "\ufff4\024\ufff4\001\002\000\004\023\ufff6\001\002\000\004" +
-    "\013\061\001\002\000\006\012\ufff5\021\ufff5\001\002\000" +
-    "\004\022\063\001\002\000\006\023\ufff8\024\041\001\002" +
-    "\000\004\023\065\001\002\000\004\011\066\001\002\000" +
-    "\004\005\ufffe\001\002" });
+    "\004\007\012\001\002\000\004\010\uffff\001\002\000\004" +
+    "\010\014\001\002\000\004\020\ufffd\001\002\000\004\005" +
+    "\016\001\002\000\004\002\ufffe\001\002\000\004\020\020" +
+    "\001\002\000\006\012\023\021\ufffa\001\002\000\004\021" +
+    "\ufffb\001\002\000\004\021\074\001\002\000\004\014\ufff3" +
+    "\001\002\000\006\012\023\021\ufff9\001\002\000\004\021" +
+    "\ufff8\001\002\000\004\014\027\001\002\000\004\037\030" +
+    "\001\002\000\004\015\031\001\002\000\004\016\ufff2\001" +
+    "\002\000\004\016\033\001\002\000\004\037\034\001\002" +
+    "\000\004\017\035\001\002\000\004\020\ufff1\001\002\000" +
+    "\004\020\037\001\002\000\006\012\023\021\ufffa\001\002" +
+    "\000\004\021\041\001\002\000\004\022\042\001\002\000" +
+    "\006\023\ufff6\024\046\001\002\000\004\023\072\001\002" +
+    "\000\004\023\ufff7\001\002\000\006\023\ufff5\024\046\001" +
+    "\002\000\004\026\uffef\001\002\000\004\026\050\001\002" +
+    "\000\004\037\051\001\002\000\004\027\052\001\002\000" +
+    "\004\030\uffee\001\002\000\004\030\054\001\002\000\004" +
+    "\037\055\001\002\000\004\031\056\001\002\000\004\032" +
+    "\uffed\001\002\000\004\032\060\001\002\000\004\037\061" +
+    "\001\002\000\004\033\062\001\002\000\004\034\uffec\001" +
+    "\002\000\004\034\064\001\002\000\004\036\065\001\002" +
+    "\000\004\035\066\001\002\000\004\025\uffeb\001\002\000" +
+    "\004\025\070\001\002\000\006\023\uffea\024\uffea\001\002" +
+    "\000\004\023\ufff4\001\002\000\004\013\073\001\002\000" +
+    "\006\012\ufff0\021\ufff0\001\002\000\004\022\075\001\002" +
+    "\000\006\023\ufff6\024\046\001\002\000\004\023\077\001" +
+    "\002\000\004\011\100\001\002\000\004\005\ufffc\001\002" +
+    "" });
 
   /** Access to parse-action table. */
   public short[][] action_table() {return _action_table;}
@@ -77,26 +86,30 @@ public class Parser extends java_cup.runtime.lr_parser {
   /** <code>reduce_goto</code> table. */
   protected static final short[][] _reduce_table = 
     unpackFromStrings(new String[] {
-    "\000\064\000\006\002\005\003\004\001\001\000\002\001" +
+    "\000\076\000\006\002\005\003\004\001\001\000\002\001" +
     "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
-    "\000\002\001\001\000\002\001\001\000\004\004\013\001" +
-    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
-    "\000\010\005\017\006\016\011\021\001\001\000\002\001" +
-    "\001\000\002\001\001\000\002\001\001\000\006\006\022" +
-    "\011\021\001\001\000\002\001\001\000\002\001\001\000" +
-    "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
-    "\001\001\000\002\001\001\000\010\005\032\006\016\011" +
-    "\021\001\001\000\002\001\001\000\002\001\001\000\010" +
-    "\007\035\010\036\012\037\001\001\000\002\001\001\000" +
-    "\002\001\001\000\006\010\056\012\037\001\001\000\002" +
-    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
-    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
+    "\000\002\001\001\000\002\001\001\000\004\013\012\001" +
+    "\001\000\004\004\014\001\001\000\004\014\016\001\001" +
     "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
-    "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
+    "\010\005\021\006\020\011\023\001\001\000\002\001\001" +
+    "\000\002\001\001\000\004\015\025\001\001\000\006\006" +
+    "\024\011\023\001\001\000\002\001\001\000\002\001\001" +
+    "\000\002\001\001\000\002\001\001\000\004\016\031\001" +
+    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
+    "\000\004\017\035\001\001\000\002\001\001\000\010\005" +
+    "\037\006\020\011\023\001\001\000\002\001\001\000\002" +
+    "\001\001\000\010\007\042\010\043\012\044\001\001\000" +
+    "\002\001\001\000\002\001\001\000\006\010\070\012\044" +
+    "\001\001\000\004\020\046\001\001\000\002\001\001\000" +
+    "\002\001\001\000\002\001\001\000\004\021\052\001\001" +
+    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
+    "\004\022\056\001\001\000\002\001\001\000\002\001\001" +
+    "\000\002\001\001\000\004\023\062\001\001\000\002\001" +
+    "\001\000\002\001\001\000\002\001\001\000\004\024\066" +
     "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
-    "\001\000\002\001\001\000\010\007\063\010\036\012\037" +
-    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
-    "\001" });
+    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
+    "\000\010\007\075\010\043\012\044\001\001\000\002\001" +
+    "\001\000\002\001\001\000\002\001\001" });
 
   /** Access to <code>reduce_goto</code> table. */
   public short[][] reduce_table() {return _reduce_table;}
@@ -136,6 +149,10 @@ public class Parser extends java_cup.runtime.lr_parser {
 
 
 
+    LinkedList<Paquete> pilaPaquetes = new LinkedList<>();
+    private Proyecto proyecto = new Proyecto();
+    private Archivo archivo;
+
     public void syntax_error(Symbol symbol){
         if(symbol.value==null){
             System.out.println("ERROR_SINTACTICO EN::NULL LINEA:"+symbol.left+" COLUMNA:"+symbol.right);
@@ -143,6 +160,11 @@ public class Parser extends java_cup.runtime.lr_parser {
             System.out.println("ERROR_SINTACTICO EN::"+((String)symbol.value)+" LINEA:"+symbol.left+" COLUMNA:"+symbol.right);
         }
     }
+
+    public Proyecto getProyecto(){
+        return this.proyecto;
+    }
+
 
 
 
@@ -194,25 +216,57 @@ class CUP$Parser$actions {
           return CUP$Parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 2: // proyecto ::= ET_PROYECTO_INIC ET_NOMBRE_PROYECTO_INIC ID_NOMBRE ET_NOMBRE_PROYECTO_FIN paquete_principal ET_PROYECTO_FIN 
+          case 2: // NT$0 ::= 
             {
               Object RESULT =null;
+		int idleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
+		Object id = (Object)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
 
-              CUP$Parser$result = parser.getSymbolFactory().newSymbol("proyecto",1, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-5)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
+        proyecto.setNombre(id.toString());
+    
+              CUP$Parser$result = parser.getSymbolFactory().newSymbol("NT$0",9, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 3: // paquete_principal ::= ET_PAQUETE_PRINCIPAL_INIC ET_PAQUETES_PAQUETE_INIC paquetes ET_PAQUETES_PAQUETE_FIN ET_ARCHIVOS_PAQUETE_INIC archivos ET_ARCHIVOS_PAQUETE_FIN ET_PAQUETE_PRINCIPAL_FIN 
+          case 3: // proyecto ::= ET_PROYECTO_INIC ET_NOMBRE_PROYECTO_INIC ID_NOMBRE ET_NOMBRE_PROYECTO_FIN NT$0 paquete_principal ET_PROYECTO_FIN 
             {
               Object RESULT =null;
+              // propagate RESULT from NT$0
+                RESULT = (Object) ((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-2)).value;
+		int idleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-4)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-4)).right;
+		Object id = (Object)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-4)).value;
 
-              CUP$Parser$result = parser.getSymbolFactory().newSymbol("paquete_principal",2, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-7)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
+              CUP$Parser$result = parser.getSymbolFactory().newSymbol("proyecto",1, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-6)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 4: // paquetes ::= paquetes_p 
+          case 4: // NT$1 ::= 
+            {
+              Object RESULT =null;
+
+        pilaPaquetes.add(proyecto.getPaquetePrincipal());
+    
+              CUP$Parser$result = parser.getSymbolFactory().newSymbol("NT$1",10, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
+            }
+          return CUP$Parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 5: // paquete_principal ::= ET_PAQUETE_PRINCIPAL_INIC NT$1 ET_PAQUETES_PAQUETE_INIC paquetes ET_PAQUETES_PAQUETE_FIN ET_ARCHIVOS_PAQUETE_INIC archivos ET_ARCHIVOS_PAQUETE_FIN ET_PAQUETE_PRINCIPAL_FIN 
+            {
+              Object RESULT =null;
+              // propagate RESULT from NT$1
+                RESULT = (Object) ((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-7)).value;
+
+              CUP$Parser$result = parser.getSymbolFactory().newSymbol("paquete_principal",2, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-8)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
+            }
+          return CUP$Parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 6: // paquetes ::= paquetes_p 
             {
               Object RESULT =null;
 
@@ -221,7 +275,7 @@ class CUP$Parser$actions {
           return CUP$Parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 5: // paquetes ::= 
+          case 7: // paquetes ::= 
             {
               Object RESULT =null;
 
@@ -230,7 +284,7 @@ class CUP$Parser$actions {
           return CUP$Parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 6: // paquetes_p ::= paquete 
+          case 8: // paquetes_p ::= paquete 
             {
               Object RESULT =null;
 
@@ -239,7 +293,7 @@ class CUP$Parser$actions {
           return CUP$Parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 7: // paquetes_p ::= paquete paquetes_p 
+          case 9: // paquetes_p ::= paquete paquetes_p 
             {
               Object RESULT =null;
 
@@ -248,7 +302,7 @@ class CUP$Parser$actions {
           return CUP$Parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 8: // archivos ::= archivos_p 
+          case 10: // archivos ::= archivos_p 
             {
               Object RESULT =null;
 
@@ -257,7 +311,7 @@ class CUP$Parser$actions {
           return CUP$Parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 9: // archivos ::= 
+          case 11: // archivos ::= 
             {
               Object RESULT =null;
 
@@ -266,7 +320,7 @@ class CUP$Parser$actions {
           return CUP$Parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 10: // archivos_p ::= archivo 
+          case 12: // archivos_p ::= archivo 
             {
               Object RESULT =null;
 
@@ -275,7 +329,7 @@ class CUP$Parser$actions {
           return CUP$Parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 11: // archivos_p ::= archivo archivos_p 
+          case 13: // archivos_p ::= archivo archivos_p 
             {
               Object RESULT =null;
 
@@ -284,20 +338,174 @@ class CUP$Parser$actions {
           return CUP$Parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 12: // paquete ::= ET_PAQUETE_INIC ET_NOMBRE_PAQUETE_INIC ID_NOMBRE ET_NOMBRE_PAQUETE_FIN ET_ID_PAQUETE_INIC ID_NOMBRE ET_ID_PAQUETE_FIN ET_PAQUETES_PAQUETE_INIC paquetes ET_PAQUETES_PAQUETE_FIN ET_ARCHIVOS_PAQUETE_INIC archivos ET_ARCHIVOS_PAQUETE_FIN ET_PAQUETE_FIN 
+          case 14: // NT$2 ::= 
             {
               Object RESULT =null;
 
-              CUP$Parser$result = parser.getSymbolFactory().newSymbol("paquete",7, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-13)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
+            Paquete paquete = new Paquete();
+            pilaPaquetes.getLast().agregarPaquete(paquete);
+            pilaPaquetes.add(paquete);
+        
+              CUP$Parser$result = parser.getSymbolFactory().newSymbol("NT$2",11, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 13: // archivo ::= ET_ARCHIVO_INIC ET_NOMBRE_ARCHIVO_INIC ID_NOMBRE ET_NOMBRE_ARCHIVO_FIN ET_ID_ARCHIVO_INIC ID_NOMBRE ET_ID_ARCHIVO_FIN ET_PAQUETE_ARCHIVO_INIC ID_NOMBRE ET_PAQUETE_ARCHIVO_FIN ET_CODIGO_ARCHIVO_INIC CODIGO ET_CODIGO_ARCHIVO_FIN ET_ARCHIVO_FIN 
+          case 15: // NT$3 ::= 
+            {
+              Object RESULT =(Object) ((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-3)).value;
+		int nombreleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).left;
+		int nombreright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
+		Object nombre = (Object)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
+
+            pilaPaquetes.getLast().setNombre(nombre.toString());
+        
+              CUP$Parser$result = parser.getSymbolFactory().newSymbol("NT$3",12, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
+            }
+          return CUP$Parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 16: // NT$4 ::= 
+            {
+              Object RESULT =(Object) ((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-3)).value;
+		int nombreleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-5)).left;
+		int nombreright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-5)).right;
+		Object nombre = (Object)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-5)).value;
+		int idleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
+		Object id = (Object)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
+
+            pilaPaquetes.getLast().setId(id.toString());
+        
+              CUP$Parser$result = parser.getSymbolFactory().newSymbol("NT$4",13, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
+            }
+          return CUP$Parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 17: // paquete ::= ET_PAQUETE_INIC NT$2 ET_NOMBRE_PAQUETE_INIC ID_NOMBRE ET_NOMBRE_PAQUETE_FIN NT$3 ET_ID_PAQUETE_INIC ID_NOMBRE ET_ID_PAQUETE_FIN NT$4 ET_PAQUETES_PAQUETE_INIC paquetes ET_PAQUETES_PAQUETE_FIN ET_ARCHIVOS_PAQUETE_INIC archivos ET_ARCHIVOS_PAQUETE_FIN ET_PAQUETE_FIN 
+            {
+              Object RESULT =null;
+              // propagate RESULT from NT$4
+                RESULT = (Object) ((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-7)).value;
+		int nombreleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-13)).left;
+		int nombreright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-13)).right;
+		Object nombre = (Object)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-13)).value;
+		int idleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-9)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-9)).right;
+		Object id = (Object)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-9)).value;
+		
+        pilaPaquetes.removeLast();
+    
+              CUP$Parser$result = parser.getSymbolFactory().newSymbol("paquete",7, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-16)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
+            }
+          return CUP$Parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 18: // NT$5 ::= 
             {
               Object RESULT =null;
 
-              CUP$Parser$result = parser.getSymbolFactory().newSymbol("archivo",8, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-13)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
+        archivo = new Archivo();
+        pilaPaquetes.getLast().agregarArchivo(archivo);
+    
+              CUP$Parser$result = parser.getSymbolFactory().newSymbol("NT$5",14, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
+            }
+          return CUP$Parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 19: // NT$6 ::= 
+            {
+              Object RESULT =(Object) ((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-3)).value;
+		int nombreleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).left;
+		int nombreright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
+		Object nombre = (Object)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
+
+            archivo.setNombre(nombre.toString());
+        
+              CUP$Parser$result = parser.getSymbolFactory().newSymbol("NT$6",15, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
+            }
+          return CUP$Parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 20: // NT$7 ::= 
+            {
+              Object RESULT =(Object) ((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-3)).value;
+		int nombreleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-5)).left;
+		int nombreright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-5)).right;
+		Object nombre = (Object)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-5)).value;
+		int idleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
+		Object id = (Object)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
+
+            archivo.setId(id.toString());
+        
+              CUP$Parser$result = parser.getSymbolFactory().newSymbol("NT$7",16, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
+            }
+          return CUP$Parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 21: // NT$8 ::= 
+            {
+              Object RESULT =(Object) ((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-3)).value;
+		int nombreleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-9)).left;
+		int nombreright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-9)).right;
+		Object nombre = (Object)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-9)).value;
+		int idleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-5)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-5)).right;
+		Object id = (Object)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-5)).value;
+		int paqueteleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).left;
+		int paqueteright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
+		Object paquete = (Object)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
+
+            archivo.setPaquete(paquete.toString());
+        
+              CUP$Parser$result = parser.getSymbolFactory().newSymbol("NT$8",17, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
+            }
+          return CUP$Parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 22: // NT$9 ::= 
+            {
+              Object RESULT =(Object) ((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-3)).value;
+		int nombreleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-13)).left;
+		int nombreright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-13)).right;
+		Object nombre = (Object)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-13)).value;
+		int idleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-9)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-9)).right;
+		Object id = (Object)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-9)).value;
+		int paqueteleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-5)).left;
+		int paqueteright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-5)).right;
+		Object paquete = (Object)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-5)).value;
+		int codigoleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).left;
+		int codigoright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
+		Object codigo = (Object)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
+
+            archivo.setCodigo(codigo.toString());
+        
+              CUP$Parser$result = parser.getSymbolFactory().newSymbol("NT$9",18, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
+            }
+          return CUP$Parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 23: // archivo ::= ET_ARCHIVO_INIC NT$5 ET_NOMBRE_ARCHIVO_INIC ID_NOMBRE ET_NOMBRE_ARCHIVO_FIN NT$6 ET_ID_ARCHIVO_INIC ID_NOMBRE ET_ID_ARCHIVO_FIN NT$7 ET_PAQUETE_ARCHIVO_INIC ID_NOMBRE ET_PAQUETE_ARCHIVO_FIN NT$8 ET_CODIGO_ARCHIVO_INIC CODIGO ET_CODIGO_ARCHIVO_FIN NT$9 ET_ARCHIVO_FIN 
+            {
+              Object RESULT =null;
+              // propagate RESULT from NT$9
+                RESULT = (Object) ((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
+		int nombreleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-15)).left;
+		int nombreright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-15)).right;
+		Object nombre = (Object)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-15)).value;
+		int idleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-11)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-11)).right;
+		Object id = (Object)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-11)).value;
+		int paqueteleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-7)).left;
+		int paqueteright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-7)).right;
+		Object paquete = (Object)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-7)).value;
+		int codigoleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-3)).left;
+		int codigoright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-3)).right;
+		Object codigo = (Object)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-3)).value;
+
+              CUP$Parser$result = parser.getSymbolFactory().newSymbol("archivo",8, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-18)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
 
