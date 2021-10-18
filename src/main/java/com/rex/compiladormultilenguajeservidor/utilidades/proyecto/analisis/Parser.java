@@ -224,6 +224,8 @@ class CUP$Parser$actions {
 		Object id = (Object)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
 
         proyecto.setNombre(id.toString());
+        proyecto.getPaquetePrincipal().setId(id.toString());
+        proyecto.getPaquetePrincipal().setNombre(id.toString());
     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("NT$0",9, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }

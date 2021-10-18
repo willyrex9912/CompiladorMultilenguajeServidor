@@ -41,6 +41,7 @@ public class ControladorServicioProyecto {
             manejadorLista.registrarProyecto(proyecto.getNombre());
             return new Confirmacion("El proyecto "+proyecto.getNombre()+" ha sido guardado.",true);
         }catch (Exception e){
+            e.printStackTrace();
             return new Confirmacion("Error al intentar guardar el proyecto "+proyecto.getNombre()+" .",false);
         }
     }
