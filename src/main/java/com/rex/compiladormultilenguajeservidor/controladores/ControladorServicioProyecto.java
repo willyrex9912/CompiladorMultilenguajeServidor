@@ -3,6 +3,7 @@ package com.rex.compiladormultilenguajeservidor.controladores;
 import com.rex.compiladormultilenguajeservidor.modelos.Confirmacion;
 import com.rex.compiladormultilenguajeservidor.modelos.proyecto.Proyecto;
 import com.rex.compiladormultilenguajeservidor.utilidades.Archivo;
+import com.rex.compiladormultilenguajeservidor.utilidades.RecuperadorProyecto;
 import com.rex.compiladormultilenguajeservidor.utilidades.proyecto.ConstructorXML;
 import com.rex.compiladormultilenguajeservidor.utilidades.proyecto.ManejadorLista;
 import org.springframework.web.bind.annotation.*;
@@ -19,10 +20,12 @@ public class ControladorServicioProyecto {
     public static final String PATH_SERVICIO_PROYECTO = "/compimult";
     private ConstructorXML constructorXML;
     private ManejadorLista manejadorLista;
+    private RecuperadorProyecto recuperadorProyecto;
 
     public ControladorServicioProyecto() {
         constructorXML = new ConstructorXML();
         manejadorLista = new ManejadorLista();
+        recuperadorProyecto = new RecuperadorProyecto();
     }
 
     @GetMapping(PATH_SERVICIO_PROYECTO+"/Responder")
@@ -40,6 +43,11 @@ public class ControladorServicioProyecto {
         }catch (Exception e){
             return new Confirmacion("Error al intentar guardar el proyecto "+proyecto.getNombre()+" .",false);
         }
+    }
+
+    @PostMapping(PATH_SERVICIO_PROYECTO+"/GetProyecto")
+    public Proyecto recuperarProyecto(@RequestBody String nombreProyecto){
+        return recuperadorProyecto.recuperar(nombreProyecto);
     }
 
     @GetMapping(PATH_SERVICIO_PROYECTO+"/GetProyectos")
