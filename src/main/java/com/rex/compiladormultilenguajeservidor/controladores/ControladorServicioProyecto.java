@@ -42,7 +42,11 @@ public class ControladorServicioProyecto {
             return new Confirmacion("El proyecto "+proyecto.getNombre()+" ha sido guardado.",true);
         }catch (Exception e){
             e.printStackTrace();
-            return new Confirmacion("Error al intentar guardar el proyecto "+proyecto.getNombre()+" .",false);
+            if(proyecto==null | proyecto.getNombre()==null){
+                return new Confirmacion("No hay proyecto en curso para guardar.", false);
+            }else {
+                return new Confirmacion("Error al intentar guardar el proyecto " + proyecto.getNombre() + " .", false);
+            }
         }
     }
 
