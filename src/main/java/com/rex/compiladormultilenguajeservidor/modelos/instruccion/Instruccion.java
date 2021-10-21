@@ -2,9 +2,8 @@ package com.rex.compiladormultilenguajeservidor.modelos.instruccion;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.rex.compiladormultilenguajeservidor.modelos.Codigo3d;
-import com.rex.compiladormultilenguajeservidor.modelos.instruccionOld.ResultadoInstruccion;
+import com.rex.compiladormultilenguajeservidor.modelos.instruccion.complemento.ResultadoInstruccion;
 
 @JsonTypeInfo( use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXTERNAL_PROPERTY, property = "tipo", visible = true)
 @JsonSubTypes({

@@ -1,10 +1,9 @@
 package com.rex.compiladormultilenguajeservidor.modelos.instruccion;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.rex.compiladormultilenguajeservidor.modelos.Codigo3d;
-import com.rex.compiladormultilenguajeservidor.modelos.instruccionOld.ResultadoInstruccion;
-import com.rex.compiladormultilenguajeservidor.modelos.instruccionOld.TipoInstruccion;
+import com.rex.compiladormultilenguajeservidor.modelos.instruccion.complemento.ResultadoInstruccion;
+import com.rex.compiladormultilenguajeservidor.modelos.instruccion.complemento.TipoInstruccion;
 
 public class Operacion implements Instruccion{
 

@@ -2,7 +2,7 @@ package com.rex.compiladormultilenguajeservidor.modelos.instruccion;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.rex.compiladormultilenguajeservidor.modelos.Codigo3d;
-import com.rex.compiladormultilenguajeservidor.modelos.instruccionOld.ResultadoInstruccion;
+import com.rex.compiladormultilenguajeservidor.modelos.instruccion.complemento.ResultadoInstruccion;
 
 public class Declaracion implements Instruccion{
 

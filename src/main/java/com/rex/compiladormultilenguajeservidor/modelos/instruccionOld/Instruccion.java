@@ -1,6 +1,8 @@
 package com.rex.compiladormultilenguajeservidor.modelos.instruccionOld;
 
 import com.rex.compiladormultilenguajeservidor.modelos.Codigo3d;
+import com.rex.compiladormultilenguajeservidor.modelos.instruccion.complemento.ResultadoInstruccion;
+import com.rex.compiladormultilenguajeservidor.modelos.instruccion.complemento.TipoInstruccion;
 
 import java.util.LinkedList;
 

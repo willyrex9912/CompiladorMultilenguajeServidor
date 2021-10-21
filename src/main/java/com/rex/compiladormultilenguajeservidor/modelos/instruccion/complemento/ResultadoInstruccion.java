@@ -1,4 +1,4 @@
-package com.rex.compiladormultilenguajeservidor.modelos.instruccionOld;
+package com.rex.compiladormultilenguajeservidor.modelos.instruccion.complemento;
 
 public class ResultadoInstruccion {
 
