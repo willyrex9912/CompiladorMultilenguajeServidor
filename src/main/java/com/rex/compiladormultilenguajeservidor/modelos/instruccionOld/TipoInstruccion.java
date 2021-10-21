@@ -1,8 +1,8 @@
-package com.rex.compiladormultilenguajeservidor.modelos.instruccion;
+package com.rex.compiladormultilenguajeservidor.modelos.instruccionOld;
 
 public class TipoInstruccion {
 
-    public static final String ASIGNACION = "asign";
+    public static final String ASIGNACION = "asignacion";
 
     public static final String SUMA = "+";
     public static final String RESTA = "-";
