@@ -26,11 +26,11 @@ public class ControladorServicioCodigo3D {
         codigo3d = new Codigo3d();
         System.out.println("RECIBIENDO INSTRUCCIONES");
         int idT = 1;
-        /*for (Instruccion instruccion:instrucciones){
+        for (Instruccion instruccion:instrucciones){
             idT = instruccion.generarCodigo(idT,codigo3d).getIdT();
         }
         System.out.println("CODIGO 3D:");
-        System.out.println(codigo3d.getCodigo());*/
+        System.out.println(codigo3d.getCodigo());
         return new Confirmacion("Instrucciones recibidas.", true);
     }
 
