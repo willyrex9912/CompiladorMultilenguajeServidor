@@ -23,10 +23,11 @@ public class ControladorServicioCodigo3D {
 
     @PostMapping(ControladorServicioProyecto.PATH_SERVICIO_PROYECTO+"/codigo3d")
     public Confirmacion test(@RequestBody List<Instruccion> instrucciones){
+        codigo3d = new Codigo3d();
         System.out.println("RECIBIENDO INSTRUCCIONES");
-        int idT = 0;
+        int idT = 1;
         for (Instruccion instruccion:instrucciones){
-            idT = instruccion.generarCodigo(idT+1,codigo3d);
+            idT = instruccion.generarCodigo(idT,codigo3d).getIdT();
         }
         System.out.println("CODIGO 3D:");
         System.out.println(codigo3d.getCodigo());

@@ -11,20 +11,21 @@ public class Instruccion {
 
     //5+5  T1
 
-    public int generarCodigo(int idT, Codigo3d codigo3d){
-        if(this.opr.equals(TipoInstruccion.INT)|this.opr.equals(TipoInstruccion.ID)){
-            codigo3d.agregarCodigo("t"+idT+" = "+this.resultado);
-            return idT;
+    public ResultadoInstruccion generarCodigo(int idT, Codigo3d codigo3d){
+        if(this.opr.equals(TipoInstruccion.INT)|this.opr.equals(TipoInstruccion.ID)|this.opr.equals(TipoInstruccion.CHAR)|this.opr.equals(TipoInstruccion.FLOAT)){
+            ResultadoInstruccion ri = new ResultadoInstruccion(this.resultado.toString(),idT);
+            return ri;
         }else if(this.opr.equals(TipoInstruccion.ASIGNACION)){
-            int idT1 = this.opr1.generarCodigo(idT,codigo3d);
-            int idT2 = this.opr2.generarCodigo(idT1+1,codigo3d);
-            codigo3d.agregarCodigo("t"+idT1+" = t"+idT2);
-            return idT2;
+            ResultadoInstruccion res1 = this.opr1.generarCodigo(idT,codigo3d);
+            ResultadoInstruccion res2 = this.opr2.generarCodigo(res1.getIdT(),codigo3d);
+            codigo3d.agregarCodigo(res1.getValor()+" = "+res2.getValor());
+            return new ResultadoInstruccion("",res2.getIdT());
         }else{
-            int idT1 = this.opr1.generarCodigo(idT,codigo3d);
-            int idT2 = this.opr2.generarCodigo(idT1+1,codigo3d);
-            codigo3d.agregarCodigo("t"+(idT2+1)+" = t"+idT1+" "+this.opr+" t"+idT2);
-            return idT2+1;
+            ResultadoInstruccion res1 = this.opr1.generarCodigo(idT,codigo3d);
+            ResultadoInstruccion res2 = this.opr2.generarCodigo(res1.getIdT(),codigo3d);
+            String res = "t"+res2.getIdT();
+            codigo3d.agregarCodigo(res+" = "+res1.getValor()+" "+this.opr+" "+res2.getValor());
+            return new ResultadoInstruccion(res,res2.getIdT()+1);
         }
     }
 
