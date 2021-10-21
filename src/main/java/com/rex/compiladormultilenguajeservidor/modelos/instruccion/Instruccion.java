@@ -9,7 +9,8 @@ import com.rex.compiladormultilenguajeservidor.modelos.instruccion.complemento.R
 @JsonSubTypes({
         @JsonSubTypes.Type(value = Operacion.class, name = "Operacion"),
         @JsonSubTypes.Type(value = Asignacion.class, name = "Asignacion"),
-        @JsonSubTypes.Type(value = Asignacion.class, name = "Declaracion")
+        @JsonSubTypes.Type(value = Asignacion.class, name = "Declaracion"),
+        @JsonSubTypes.Type(value = Metodo.class, name = "Metodo")
 })
 public interface Instruccion {
 
