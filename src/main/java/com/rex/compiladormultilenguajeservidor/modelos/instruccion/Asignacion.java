@@ -12,9 +12,8 @@ public class Asignacion implements Instruccion{
     private Instruccion opr2;
 
     @Override
-    public ResultadoInstruccion generarCodigo(int idT, Codigo3d codigo3d) {
-        ResultadoInstruccion res2 = this.opr2.generarCodigo(idT,codigo3d);
-        codigo3d.agregarCodigo(opr1+" = "+res2.getValor());
-        return new ResultadoInstruccion("",res2.getIdT());
+    public void generarCodigo(ResultadoInstruccion res) {
+        this.opr2.generarCodigo(res);
+        res.getCodigo3d().agregarCodigo(opr1+" = "+res.getValor());
     }
 }

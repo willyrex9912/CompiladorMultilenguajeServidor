@@ -1,24 +1,21 @@
-package com.rex.compiladormultilenguajeservidor.modelos.instruccion;
+package com.rex.compiladormultilenguajeservidor.modelos.instruccion.condicional;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.rex.compiladormultilenguajeservidor.modelos.Codigo3d;
+import com.rex.compiladormultilenguajeservidor.modelos.instruccion.Instruccion;
 import com.rex.compiladormultilenguajeservidor.modelos.instruccion.complemento.ResultadoInstruccion;
 
 import java.util.LinkedList;
 
-public class Metodo implements Instruccion{
+public class ElseIf implements Instruccion {
 
-    @JsonProperty("nombre")
-    private String nombre;
+    @JsonProperty("condicion")
+    private Instruccion condicion;
+
     @JsonProperty("instrucciones")
     private LinkedList<Instruccion> instrucciones;
 
     @Override
     public void generarCodigo(ResultadoInstruccion res) {
-        res.getCodigo3d().agregarCodigo(this.nombre+" {");
-        for (Instruccion instruccion:this.instrucciones){
-            instruccion.generarCodigo(res);
-        }
-        res.getCodigo3d().agregarCodigo("}");
     }
 }

@@ -17,15 +17,18 @@ public class Operacion implements Instruccion{
     private Object resultado;
 
     @Override
-    public ResultadoInstruccion generarCodigo(int idT, Codigo3d codigo3d) {
+    public void generarCodigo(ResultadoInstruccion res) {
         if(this.opr.equals(TipoInstruccion.INT)|this.opr.equals(TipoInstruccion.ID)|this.opr.equals(TipoInstruccion.CHAR)|this.opr.equals(TipoInstruccion.FLOAT)){
-            return new ResultadoInstruccion(this.resultado.toString(),idT);
+            res.setValor(this.resultado.toString());
         }else{
-            ResultadoInstruccion res1 = this.opr1.generarCodigo(idT,codigo3d);
-            ResultadoInstruccion res2 = this.opr2.generarCodigo(res1.getIdT(),codigo3d);
-            String res = "t"+res2.getIdT();
-            codigo3d.agregarCodigo(res+" = "+res1.getValor()+" "+this.opr+" "+res2.getValor());
-            return new ResultadoInstruccion(res,res2.getIdT()+1);
+            this.opr1.generarCodigo(res);
+            String res1 = res.getValor();
+            this.opr2.generarCodigo(res);
+            String res2 = res.getValor();
+            String resultado = "t"+res.getIdT();
+            res.setValor(resultado);
+            res.getCodigo3d().agregarCodigo(resultado+" = "+res1+" "+this.opr+" "+res2);
+            res.incIdT();
         }
     }
 }

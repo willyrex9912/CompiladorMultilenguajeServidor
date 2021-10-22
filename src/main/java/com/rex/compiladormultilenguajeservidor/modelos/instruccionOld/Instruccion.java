@@ -14,6 +14,7 @@ public class Instruccion {
     private String opr;
     private LinkedList<Instruccion> instrucciones;
 
+    /*
     public ResultadoInstruccion generarCodigo(int idT, Codigo3d codigo3d){
         if(this.opr.equals(TipoInstruccion.INT)|this.opr.equals(TipoInstruccion.ID)|this.opr.equals(TipoInstruccion.CHAR)|this.opr.equals(TipoInstruccion.FLOAT)){
             ResultadoInstruccion ri = new ResultadoInstruccion(this.resultado.toString(),idT);
@@ -31,6 +32,7 @@ public class Instruccion {
             return new ResultadoInstruccion(res,res2.getIdT()+1);
         }
     }
+    */
 
     public Instruccion getOpr1() {
         return opr1;

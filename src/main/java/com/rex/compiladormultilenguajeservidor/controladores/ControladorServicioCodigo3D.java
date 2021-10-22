@@ -3,6 +3,7 @@ package com.rex.compiladormultilenguajeservidor.controladores;
 import com.rex.compiladormultilenguajeservidor.modelos.Codigo3d;
 import com.rex.compiladormultilenguajeservidor.modelos.Confirmacion;
 import com.rex.compiladormultilenguajeservidor.modelos.instruccion.Instruccion;
+import com.rex.compiladormultilenguajeservidor.modelos.instruccion.complemento.ResultadoInstruccion;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,22 +16,20 @@ import java.util.List;
 @RestController
 public class ControladorServicioCodigo3D {
 
-    private Codigo3d codigo3d;
+    private ResultadoInstruccion resultadoInstruccion;
 
     public ControladorServicioCodigo3D() {
-        this.codigo3d = new Codigo3d();
     }
 
     @PostMapping(ControladorServicioProyecto.PATH_SERVICIO_PROYECTO+"/codigo3d")
     public Confirmacion test(@RequestBody List<Instruccion> instrucciones){
-        codigo3d = new Codigo3d();
         System.out.println("RECIBIENDO INSTRUCCIONES");
-        int idT = 1;
+        resultadoInstruccion = new ResultadoInstruccion("",1,1);
         for (Instruccion instruccion:instrucciones){
-            idT = instruccion.generarCodigo(idT,codigo3d).getIdT();
+            instruccion.generarCodigo(resultadoInstruccion);
         }
         System.out.println("CODIGO 3D:");
-        System.out.println(codigo3d.getCodigo());
+        System.out.println(resultadoInstruccion.getCodigo3d().getCodigo());
         return new Confirmacion("Instrucciones recibidas.", true);
     }
 
