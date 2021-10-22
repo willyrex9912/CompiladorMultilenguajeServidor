@@ -33,11 +33,13 @@ public class ResultadoInstruccion {
     }
 
     public int incIdT() {
-        return this.idT++;
+        this.idT++;
+        return this.idT;
     }
 
     public int incIdE() {
-        return this.idE++;
+        this.idE++;
+        return this.idE;
     }
 
     public Codigo3d getCodigo3d() {
