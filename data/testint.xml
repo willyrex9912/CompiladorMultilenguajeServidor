@@ -33,6 +33,15 @@ void main(){
 		x = x - 1;
 	}
 	x = 0;
+}$$$###"@@@"+!*</CODIGO_ARCHIVO></ARCHIVO>     </ARCHIVOS_PAQUETE></PAQUETE><PAQUETE>     <NOMBRE_PAQUETE>dowhile</NOMBRE_PAQUETE>     <ID_PAQUETE>dowhile</ID_PAQUETE>     <PAQUETES_PAQUETE>     </PAQUETES_PAQUETE>     <ARCHIVOS_PAQUETE><ARCHIVO>     <NOMBRE_ARCHIVO>dowhile</NOMBRE_ARCHIVO>     <ID_ARCHIVO>dowhile.dowhile</ID_ARCHIVO>     <PAQUETE_ARCHIVO>dowhile</PAQUETE_ARCHIVO>     <CODIGO_ARCHIVO>*!+"@@@"###$$$%%PROGRAMA
+
+int contador = 10;
+
+void main(){
+	do{
+		contador = contador - 1;
+	}while(contador>=0);
+	contador = 99;
 }$$$###"@@@"+!*</CODIGO_ARCHIVO></ARCHIVO>     </ARCHIVOS_PAQUETE></PAQUETE>     </PAQUETES_PAQUETE>     <ARCHIVOS_PAQUETE><ARCHIVO>     <NOMBRE_ARCHIVO>main</NOMBRE_ARCHIVO>     <ID_ARCHIVO>main</ID_ARCHIVO>     <PAQUETE_ARCHIVO>testint</PAQUETE_ARCHIVO>     <CODIGO_ARCHIVO>*!+"@@@"###$$$%%PROGRAMA
 
 int x;

@@ -3,6 +3,7 @@ package com.rex.compiladormultilenguajeservidor.modelos.instruccion;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.rex.compiladormultilenguajeservidor.modelos.Codigo3d;
+import com.rex.compiladormultilenguajeservidor.modelos.instruccion.ciclo.DoWhile;
 import com.rex.compiladormultilenguajeservidor.modelos.instruccion.ciclo.While;
 import com.rex.compiladormultilenguajeservidor.modelos.instruccion.complemento.ResultadoInstruccion;
 import com.rex.compiladormultilenguajeservidor.modelos.instruccion.condicional.Else;
@@ -19,6 +20,7 @@ import com.rex.compiladormultilenguajeservidor.modelos.instruccion.condicional.I
         @JsonSubTypes.Type(value = ElseIf.class, name = "ElseIf"),
         @JsonSubTypes.Type(value = Else.class, name = "Else"),
         @JsonSubTypes.Type(value = While.class, name = "While"),
+        @JsonSubTypes.Type(value = DoWhile.class, name = "DoWhile"),
 })
 public interface Instruccion {
 
