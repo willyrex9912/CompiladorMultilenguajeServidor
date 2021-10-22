@@ -25,12 +25,12 @@ public class ElseIf implements Instruccion {
         res.getCodigo3d().agregarCodigo("if "+res.getValor()+" goto et"+numEtIf);
         res.getCodigo3d().agregarCodigo("goto et"+numEtN);
         res.getCodigo3d().agregarCodigo("et"+numEtIf+":");
+        res.incIdE();
         for (Instruccion instruccion:this.instrucciones){
             instruccion.generarCodigo(res);
         }
         res.getCodigo3d().agregarCodigo("goto etf"+this.idEF);
         res.getCodigo3d().agregarCodigo("et"+numEtN+":");
-        res.incIdE();
     }
 
     public void setIdEF(int idEF) {
