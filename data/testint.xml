@@ -25,6 +25,14 @@ void main(){
 		}
 	}
 	x = 0;
+}$$$###"@@@"+!*</CODIGO_ARCHIVO></ARCHIVO>     </ARCHIVOS_PAQUETE></PAQUETE><PAQUETE>     <NOMBRE_PAQUETE>while</NOMBRE_PAQUETE>     <ID_PAQUETE>while</ID_PAQUETE>     <PAQUETES_PAQUETE>     </PAQUETES_PAQUETE>     <ARCHIVOS_PAQUETE><ARCHIVO>     <NOMBRE_ARCHIVO>while</NOMBRE_ARCHIVO>     <ID_ARCHIVO>while.while</ID_ARCHIVO>     <PAQUETE_ARCHIVO>while</PAQUETE_ARCHIVO>     <CODIGO_ARCHIVO>*!+"@@@"###$$$%%PROGRAMA
+
+void main(){
+	int x = 10;
+	while(x>0){
+		x = x - 1;
+	}
+	x = 0;
 }$$$###"@@@"+!*</CODIGO_ARCHIVO></ARCHIVO>     </ARCHIVOS_PAQUETE></PAQUETE>     </PAQUETES_PAQUETE>     <ARCHIVOS_PAQUETE><ARCHIVO>     <NOMBRE_ARCHIVO>main</NOMBRE_ARCHIVO>     <ID_ARCHIVO>main</ID_ARCHIVO>     <PAQUETE_ARCHIVO>testint</PAQUETE_ARCHIVO>     <CODIGO_ARCHIVO>*!+"@@@"###$$$%%PROGRAMA
 
 int x;
