@@ -28,9 +28,9 @@ public class ControladorServicioCodigo3D {
         for (Instruccion instruccion:instrucciones){
             instruccion.generarCodigo(resultadoInstruccion);
         }
-        System.out.println("CODIGO 3D:");
-        System.out.println(resultadoInstruccion.getCodigo3d().getCodigo());
-        return new Confirmacion("Instrucciones recibidas.", true);
+        //System.out.println("CODIGO 3D:");
+        //System.out.println(resultadoInstruccion.getCodigo3d().getCodigo());
+        return new Confirmacion(resultadoInstruccion.getCodigo3d().getCodigo(), true);
     }
 
 }
