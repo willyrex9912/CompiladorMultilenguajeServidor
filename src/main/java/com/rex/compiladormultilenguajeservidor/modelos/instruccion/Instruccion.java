@@ -6,10 +6,9 @@ import com.rex.compiladormultilenguajeservidor.modelos.instruccion.ciclo.DoWhile
 import com.rex.compiladormultilenguajeservidor.modelos.instruccion.ciclo.For;
 import com.rex.compiladormultilenguajeservidor.modelos.instruccion.ciclo.While;
 import com.rex.compiladormultilenguajeservidor.modelos.instruccion.complemento.ResultadoInstruccion;
-import com.rex.compiladormultilenguajeservidor.modelos.instruccion.condicional.Else;
-import com.rex.compiladormultilenguajeservidor.modelos.instruccion.condicional.ElseIf;
-import com.rex.compiladormultilenguajeservidor.modelos.instruccion.condicional.If;
+import com.rex.compiladormultilenguajeservidor.modelos.instruccion.condicional.*;
 import com.rex.compiladormultilenguajeservidor.modelos.instruccion.inc_dec.IncDec;
+import com.rex.compiladormultilenguajeservidor.modelos.instruccion.saltos.Break;
 
 @JsonTypeInfo( use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXTERNAL_PROPERTY, property = "tipo", visible = true)
 @JsonSubTypes({
@@ -24,6 +23,10 @@ import com.rex.compiladormultilenguajeservidor.modelos.instruccion.inc_dec.IncDe
         @JsonSubTypes.Type(value = DoWhile.class, name = "DoWhile"),
         @JsonSubTypes.Type(value = For.class, name = "For"),
         @JsonSubTypes.Type(value = IncDec.class, name = "IncDec"),
+        @JsonSubTypes.Type(value = Switch.class, name = "Switch"),
+        @JsonSubTypes.Type(value = Case.class, name = "Case"),
+        @JsonSubTypes.Type(value = Default.class, name = "Default"),
+        @JsonSubTypes.Type(value = Break.class, name = "Break"),
 })
 public interface Instruccion {
 
