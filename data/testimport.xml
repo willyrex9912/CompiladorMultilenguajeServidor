@@ -20,9 +20,15 @@ public class OtraCalculadora {
 	
 }
 
+%%PY
+
+def funcionEnPython():
+	nombre = "Willy"
+
 %%PROGRAMA
 
 #include "JAVA.*"
+#include "PY.*"
 
 int x = 10;
 
