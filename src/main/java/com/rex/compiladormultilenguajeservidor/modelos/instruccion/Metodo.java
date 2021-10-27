@@ -13,6 +13,11 @@ public class Metodo implements Instruccion{
     @JsonProperty("instrucciones")
     private LinkedList<Instruccion> instrucciones;
 
+    public Metodo(String nombre, LinkedList<Instruccion> instrucciones) {
+        this.nombre = nombre;
+        this.instrucciones = instrucciones;
+    }
+
     @Override
     public void generarCodigo(ResultadoInstruccion res) {
         res.getCodigo3d().agregarCodigo(this.nombre+" {");
@@ -20,5 +25,9 @@ public class Metodo implements Instruccion{
             instruccion.generarCodigo(res);
         }
         res.getCodigo3d().agregarCodigo("}");
+    }
+
+    public void setNombreOficial(String nombreClase){
+        this.nombre = nombreClase+"_"+this.nombre;
     }
 }

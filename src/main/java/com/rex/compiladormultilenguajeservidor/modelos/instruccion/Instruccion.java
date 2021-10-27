@@ -16,6 +16,7 @@ import com.rex.compiladormultilenguajeservidor.modelos.instruccion.saltos.Break;
         @JsonSubTypes.Type(value = Asignacion.class, name = "Asignacion"),
         @JsonSubTypes.Type(value = Asignacion.class, name = "Declaracion"),
         @JsonSubTypes.Type(value = Metodo.class, name = "Metodo"),
+        @JsonSubTypes.Type(value = Clase.class, name = "Clase"),
         @JsonSubTypes.Type(value = If.class, name = "If"),
         @JsonSubTypes.Type(value = ElseIf.class, name = "ElseIf"),
         @JsonSubTypes.Type(value = Else.class, name = "Else"),

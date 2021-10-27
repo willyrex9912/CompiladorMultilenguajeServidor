@@ -18,7 +18,7 @@ public class Operacion implements Instruccion{
 
     @Override
     public void generarCodigo(ResultadoInstruccion res) {
-        if(this.opr.equals(TipoInstruccion.INT)|this.opr.equals(TipoInstruccion.ID)|this.opr.equals(TipoInstruccion.CHAR)|this.opr.equals(TipoInstruccion.FLOAT)){
+        if(this.opr.equals(TipoInstruccion.INT)|this.opr.equals(TipoInstruccion.DOUBLE)|this.opr.equals(TipoInstruccion.BOOLEAN)|this.opr.equals(TipoInstruccion.STRING)|this.opr.equals(TipoInstruccion.ID)|this.opr.equals(TipoInstruccion.CHAR)|this.opr.equals(TipoInstruccion.FLOAT)){
             res.setValor(this.resultado.toString());
         }else{
             this.opr1.generarCodigo(res);

@@ -13,5 +13,7 @@ public class TipoInstruccion {
     public static final String DOUBLE = "double";
     public static final String CHAR = "char";
     public static final String ID = "id";
+    public static final String BOOLEAN = "boolean";
+    public static final String STRING = "String";
 
 }
